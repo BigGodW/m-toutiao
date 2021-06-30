@@ -1,6 +1,5 @@
 <template>
   <div class="layout">
-    <h2>layout</h2>
     <router-view></router-view>
     <div class="tabbar">
       <van-tabbar v-model="active" route>

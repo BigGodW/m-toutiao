@@ -53,14 +53,19 @@ export default {
         duration:0
       })
       login(this.user).then(res=>{
+        // 保存token信息
+        const userToken = {}
+        userToken.token = res.data.data.token
+        userToken.refresh_token = res.data.data.refresh_token
+        //console.log(userToken)
+        this.$store.commit('setUser',userToken)
         this.$toast.success({
           message:'登陆成功',
           icon:'passed',
           duration:1000,
           className:'successToast'
         })
-        console.log(res.data)
-        const token = res.data.data.token
+        
         this.$router.back()
 
       }).catch(err=>{
